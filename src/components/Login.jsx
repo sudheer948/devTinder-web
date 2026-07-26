@@ -8,6 +8,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("elon@gmail.com");
   const [password, setPassword] = useState("Elon@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,13 +27,14 @@ const Login = () => {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (err) {
+      setError(err?.response?.data);
       console.error(err);
     }
   };
 
   return (
     <div className="flex justify-center my-10">
-      <div className="card bg-primary text-primary-content w-96">
+      <div className="card bg-black text-primary-content w-96">
         <div className="card-body">
           <h2 className="card-title justify-center">Login</h2>
           <div>
@@ -59,6 +61,7 @@ const Login = () => {
               />
             </fieldset>
           </div>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center m-2">
             <button className="btn" onClick={handleLogin}>
               Login
