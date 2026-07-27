@@ -1,12 +1,26 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequests } from "../utils/requestSlice";
+import { addRequests, removeRequest } from "../utils/requestSlice";
 import { useEffect } from "react";
 
 const Requests = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
+
+  const reviewRequest = async (status, _id) => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "/request/review/" + status + "/" + _id,
+        {},
+        { withCredentials: true },
+      );
+
+      dispatch(removeRequest(_id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const fetchRequests = async () => {
     try {
@@ -53,10 +67,16 @@ const Requests = () => {
                   </div>
                   <div className="text-sm font-bold">{about}</div>
                 </div>
-                <button className="btn btn-square btn-secondary w-full p-2">
+                <button
+                  className="btn btn-square btn-secondary w-full p-2"
+                  onClick={() => reviewRequest("accepted", request._id)}
+                >
                   Accept
                 </button>
-                <button className="btn btn-square btn-primary w-full p-2">
+                <button
+                  className="btn btn-square btn-primary w-full p-2"
+                  onClick={() => reviewRequest("rejected", request._id)}
+                >
                   Reject
                 </button>
               </li>
