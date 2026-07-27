@@ -27,6 +27,7 @@ const Connections = () => {
   if (!connections) return;
 
   if (connections.length === 0) return <h1>No Connections Found</h1>;
+
   return (
     <div className="text-center my-10">
       <h1 className="text-2xl">Connections</h1>
@@ -52,12 +53,6 @@ const Connections = () => {
                   </div>
                   <div className="text-sm font-bold">{about}</div>
                 </div>
-                <button className="btn btn-square btn-secondary w-full p-2">
-                  Accept
-                </button>
-                <button className="btn btn-square btn-primary w-full p-2">
-                  Reject
-                </button>
               </li>
             </ul>
           );
