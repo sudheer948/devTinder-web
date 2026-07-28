@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 shadow-sm">
+    <div className="navbar bg-base-300 shadow-sm fixed z-20 top-0">
       <div className="flex-1">
         <Link to={"/"} className="btn btn-ghost text-xl">
           🧑‍💻devTinder

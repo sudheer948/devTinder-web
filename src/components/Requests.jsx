@@ -39,10 +39,13 @@ const Requests = () => {
 
   if (!requests) return;
 
-  if (requests.length === 0) return <h1>No Requests Found</h1>;
+  if (requests.length === 0)
+    return (
+      <h1 className="my-20 text-center font-semibold">No Requests Found</h1>
+    );
 
   return (
-    <div className="my-10">
+    <div className="my-20">
       <h1 className="text-2xl text-center">Requests</h1>
       <div className="flex flex-col gap-2.5 items-center my-5">
         {requests?.map((request) => {

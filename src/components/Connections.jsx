@@ -26,10 +26,10 @@ const Connections = () => {
 
   if (!connections) return;
 
-  if (connections.length === 0) return <h1>No Connections Found</h1>;
+  if (connections.length === 0) return <h1 className="my-20 font-semibold">No Connections Found</h1>;
 
   return (
-    <div className="text-center my-10">
+    <div className="text-center my-20">
       <h1 className="text-2xl">Connections</h1>
       <div className="flex flex-col gap-2.5 items-center my-5">
         {connections.map((connection) => {

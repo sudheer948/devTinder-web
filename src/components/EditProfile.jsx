@@ -48,7 +48,7 @@ const EditProfile = ({ user }) => {
 
   return (
     <>
-      <div className="flex my-10 gap-3 justify-center">
+      <div className="flex my-20 gap-3 justify-center">
         <div className="flex justify-center">
           <div className="card bg-black text-primary-content w-96 p-2">
             <div className="card-body">
@@ -134,13 +134,16 @@ const EditProfile = ({ user }) => {
         </div>
         <UserCard
           user={{ firstName, lastName, age, gender, photoUrl, about }}
+          profile={true}
         />
       </div>
-     {showToast && <div className="toast toast-top toast-center">
-        <div className="alert alert-success">
-          <span>Profile saved successfully.</span>
+      {showToast && (
+        <div className="toast toast-top toast-center">
+          <div className="alert alert-success">
+            <span>Profile saved successfully.</span>
+          </div>
         </div>
-      </div>}
+      )}
     </>
   );
 };

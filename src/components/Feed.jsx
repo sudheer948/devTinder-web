@@ -24,12 +24,19 @@ const Feed = () => {
     getFeed();
   }, []);
 
+  console.log(feed);
+
+  if (!feed) return;
+
+  if (feed?.length === 0)
+    return <h1 className="text-center text-2xl my-20">No new users found!</h1>;
+
   return (
-    <div className="flex my-5 justify-center">
-      {feed?.map((feed) => {
-        return <UserCard key={feed._id} user={feed} />;
-      })}
-    </div>
+    feed && (
+      <div className="grid justify-center relative">
+        <UserCard user={feed[0]} profile={false}/>
+      </div>
+    )
   );
 };
 
